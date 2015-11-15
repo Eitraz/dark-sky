@@ -1,16 +1,16 @@
 package com.eitraz.forecastio;
 
-public enum Units {
-    US("us"),
-    SI("si"),
-    CA("ca"),
-    UK("uk"),
-    UK2("uk2"),
-    AUTO("auto");
+public enum DataBlock {
+    CURRENTLY("currently"),
+    MINUTELY("minutely"),
+    HOURLY("hourly"),
+    DAILY("daily"),
+    ALERTS("alerts"),
+    FLAGS("flags");
 
     private final String code;
 
-    Units(String code) {
+    DataBlock(String code) {
         this.code = code;
     }
 
