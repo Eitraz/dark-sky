@@ -45,7 +45,6 @@ public class ForecastIO {
 
     public Forecast getForecast(double latitude, double longitude, Date time) throws IOException {
         String url = getUrl(latitude, longitude, time);
-        System.out.println("url = " + url);
         URLConnection connection = new URL(url).openConnection();
 
         InputStream inputStream = connection.getInputStream();
@@ -62,7 +61,7 @@ public class ForecastIO {
      * @param time      specific time for forecast, null for current
      * @return ForecastIO request URL
      */
-    private String getUrl(double latitude, double longitude, Date time) {
+    public String getUrl(double latitude, double longitude, Date time) {
         StringBuilder urlBuilder = new StringBuilder();
         urlBuilder.append(String.format("%s/%s/%s,%s", API_URL, apiKey, latitude, longitude));
 
@@ -80,6 +79,5 @@ public class ForecastIO {
         }
         return urlBuilder.toString();
     }
-
 
 }
