@@ -12,21 +12,16 @@ import java.util.Date;
 import static org.junit.Assert.*;
 
 public class ForecastIOTest {
+    public static final String API_KEY = System.getProperty("apiKey");
     public static final Double LATITUDE = 59.332722;
     public static final Double LONGITUDE = 18.068565;
-
-    public static String apiKey;
 
     private ForecastIO io;
 
     @Before
     public void setUp() throws Exception {
-        if (StringUtils.isBlank(apiKey)) {
-            apiKey = System.getProperty("apiKey");
-        }
-        assertFalse("No API key provided, use -DapiKey=[API-KEY] when building", StringUtils.isBlank(apiKey));
-
-        io = new ForecastIO(apiKey);
+        assertFalse("No API key provided, use -DapiKey=[API-KEY] when building", StringUtils.isBlank(API_KEY));
+        io = new ForecastIO(API_KEY);
         io.setUnits(Units.SI);
         io.setLanguage(Language.ENGLISH);
     }
