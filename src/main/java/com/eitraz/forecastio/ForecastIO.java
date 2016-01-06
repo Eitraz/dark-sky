@@ -4,6 +4,7 @@ import com.eitraz.forecastio.data.Forecast;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +16,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ForecastIO {
+    protected static final Logger logger = Logger.getLogger(ForecastIO.class);
+
     private static final String API_URL = "https://api.forecast.io/forecast";
 
     private final String apiKey;
@@ -45,8 +48,9 @@ public class ForecastIO {
 
     public Forecast getForecast(double latitude, double longitude, Date time) throws IOException {
         String url = getUrl(latitude, longitude, time);
-        URLConnection connection = new URL(url).openConnection();
+        logger.debug(String.format("Getting forecast from %s", url));
 
+        URLConnection connection = new URL(url).openConnection();
         InputStream inputStream = connection.getInputStream();
         try {
             return new ObjectMapper().readValue(inputStream, Forecast.class);
