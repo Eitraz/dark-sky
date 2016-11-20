@@ -1,4 +1,4 @@
-package com.eitraz.forecastio;
+package com.eitraz.darksky;
 
 public enum DataBlock {
     CURRENTLY("currently"),

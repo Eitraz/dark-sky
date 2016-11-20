@@ -1,10 +1,11 @@
-package com.eitraz.forecastio;
+package com.eitraz.darksky;
 
-import com.eitraz.forecastio.data.Forecast;
+import com.eitraz.darksky.data.Forecast;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,10 +16,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ForecastIO {
-    protected static final Logger logger = Logger.getLogger(ForecastIO.class);
+public class DarkSky {
+    protected static final Logger logger = LogManager.getLogger();
 
-    private static final String API_URL = "https://api.forecast.io/forecast";
+    private static final String API_URL = "https://api.darksky.net/forecast";
 
     private final String apiKey;
 
@@ -26,7 +27,7 @@ public class ForecastIO {
     private Language language = Language.ENGLISH;
     private Set<DataBlock> excludes = new HashSet<>();
 
-    public ForecastIO(String apiKey) {
+    public DarkSky(String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -63,7 +64,7 @@ public class ForecastIO {
      * @param latitude  latitude
      * @param longitude longitude
      * @param time      specific time for forecast, null for current
-     * @return ForecastIO request URL
+     * @return DarkSky request URL
      */
     public String getUrl(double latitude, double longitude, Date time) {
         StringBuilder urlBuilder = new StringBuilder();

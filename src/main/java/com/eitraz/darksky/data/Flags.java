@@ -1,5 +1,5 @@
 
-package com.eitraz.forecastio.data;
+package com.eitraz.darksky.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
-package com.eitraz.forecastio;
+package com.eitraz.darksky;
 
-import com.eitraz.forecastio.data.Forecast;
+import com.eitraz.darksky.data.Forecast;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
@@ -11,24 +11,23 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public class ForecastIOTest {
-    public static final String API_KEY = System.getProperty("apiKey");
-    public static final Double LATITUDE = 59.332722;
-    public static final Double LONGITUDE = 18.068565;
+public class DarkSkyTest {
+    private static final String API_KEY = System.getProperty("apiKey");
+    private static final Double LATITUDE = 59.332722;
+    private static final Double LONGITUDE = 18.068565;
 
-    private ForecastIO io;
+    private DarkSky io;
 
     @Before
     public void setUp() throws Exception {
         assertFalse("No API key provided, use -DapiKey=[API-KEY] when building", StringUtils.isBlank(API_KEY));
-        io = new ForecastIO(API_KEY);
+        io = new DarkSky(API_KEY);
         io.setUnits(Units.SI);
         io.setLanguage(Language.ENGLISH);
     }
 
     @Test
     public void testSpecificTimeForecast() throws Exception {
-
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2015-11-15");
         Forecast forecast = io.getForecast(LATITUDE, LONGITUDE, date);
 

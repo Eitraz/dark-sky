@@ -1,5 +1,5 @@
 
-package com.eitraz.forecastio.data;
+package com.eitraz.darksky.data;
 
 import com.fasterxml.jackson.annotation.*;
 

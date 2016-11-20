@@ -1,5 +1,5 @@
 
-package com.eitraz.forecastio.data;
+package com.eitraz.darksky.data;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -16,15 +16,15 @@ import java.util.Map;
         "icon",
         "data"
 })
-public class Daily {
+public class Minutely {
     @JsonProperty("summary")
     private String summary;
     @JsonProperty("icon")
     private String icon;
     @JsonProperty("data")
-    private List<DailyData> data = new ArrayList<>();
+    private List<MinutelyData> data = new ArrayList<MinutelyData>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("summary")
     public String getSummary() {
@@ -47,12 +47,12 @@ public class Daily {
     }
 
     @JsonProperty("data")
-    public List<DailyData> getData() {
+    public List<MinutelyData> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(List<DailyData> data) {
+    public void setData(List<MinutelyData> data) {
         this.data = data;
     }
 

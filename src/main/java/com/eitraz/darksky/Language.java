@@ -1,4 +1,4 @@
-package com.eitraz.forecastio;
+package com.eitraz.darksky;
 
 public enum Language {
     ARABIC("ar"),
